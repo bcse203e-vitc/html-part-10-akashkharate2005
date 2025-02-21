@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Country-State Dropdown</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        select {
+            width: 250px;
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Country-State Dropdown</h2>
+    
+    <!-- Country Dropdown -->
+    <label for="country">Select Country:</label>
+    <select id="country">
+        <option value="">-- Select a Country --</option>
+        <option value="USA">USA</option>
+        <option value="India">India</option>
+        <option value="UK">UK</option>
+    </select>
+
+    <!-- State Dropdown -->
+    <label for="state">Select State:</label>
+    <select id="state" disabled>
+        <option value="">-- Select a State --</option>
+    </select>
+
+    <script>
+        const stateData = {
+            USA: ["California", "Texas", "New York", "Florida"],
+            India: ["Maharashtra", "Karnataka", "Delhi", "Tamil Nadu"],
+            UK: ["England", "Scotland", "Wales", "Northern Ireland"]
+        };
+
+        const countrySelect = document.getElementById("country");
+        const stateSelect = document.getElementById("state");
+
+        countrySelect.addEventListener("change", function() {
+            const selectedCountry = countrySelect.value;
+            stateSelect.innerHTML = '<option value="">-- Select a State --</option>'; // Reset options
+
+            if (selectedCountry) {
+                stateSelect.disabled = false;
+                stateData[selectedCountry].forEach(state => {
+                    let option = document.createElement("option");
+                    option.value = state;
+                    option.textContent = state;
+                    stateSelect.appendChild(option);
+                });
+            } else {
+                stateSelect.disabled = true;
+            }
+        });
+    </script>
+
+</body>
+</html>

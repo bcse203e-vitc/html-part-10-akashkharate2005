@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza Order</title>
+</head>
+<body>
+    <h1>Pizza Paradise</h1>
+    
+    <p>Select Pizza Size:</p>
+    <input type="radio" name="type" value="Small"> Small <br>
+    <input type="radio" name="type" value="Medium"> Medium <br>
+    <input type="radio" name="type" value="Large"> Large <br><br>
+
+    <p>Select Toppings:</p>
+    <input type="checkbox" name="toppings" value="Cheese"> Cheese
+    <input type="checkbox" name="toppings" value="Pepperoni"> Pepperoni
+    <input type="checkbox" name="toppings" value="Mushrooms"> Mushrooms
+    <br><br>
+
+    <button id="submit">Order</button>
+
+    <script>
+        document.getElementById("submit").addEventListener("click", function() {
+            var type = document.querySelector('input[name="type"]:checked');
+            var typeValue = type ? type.value : "Not Selected";
+
+            var toppings = document.querySelectorAll('input[name="toppings"]:checked');
+            var toppingsList = [];
+
+            toppings.forEach(function(topping) {
+                toppingsList.push(topping.value);
+            });
+
+            var toppingsValue = toppingsList.length > 0 ? toppingsList.join(", ") : "No toppings";
+
+            alert("Order Summary:\nPizza Size: " + typeValue + "\nToppings: " + toppingsValue);
+        });
+    </script>
+</body>
+</html>

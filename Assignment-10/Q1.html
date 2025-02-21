@@ -1,1 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Guess the number between 1 to 50</p>
+    <input type="number" id="numinp">
+    <p id="submit">Submit</p>
 
+    <script>
+        num=Math.floor(Math.random()*50);
+        while(1){
+        document.getElementById("submit").addEventListener("click",function()
+        {
+            var guess = document.getElementById("numinp").innerText;
+            if(guess==num)
+        {
+            prompt("Correct guess");
+        }
+        else
+        {
+            prompt("wrong guess try again ");
+        }
+        });}
+    </script>
+</body>
+</html>
